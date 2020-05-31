@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<%#include "user.h" %>
+<% tfetch(QVariantMap, user); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New User</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Name<br /><input name="user[name]" value="<%= user["name"] %>" /></label>
+  </p>
+  <p>
+    <label>Password<br /><input name="user[password]" value="<%= user["password"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

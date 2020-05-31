@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<%#include "user.h" %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing User</h1>
+
+<%== linkTo("Create a new User", urla("create")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Password</th>
+  </tr>
+<% tfetch(QList<User>, userList); %>
+<% for (const auto &i : userList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.name() %></td>
+    <td><%= i.password() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("save", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

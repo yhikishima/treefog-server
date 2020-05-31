@@ -1,0 +1,16 @@
+HEADERS += user_createView.moc
+SOURCES += user_createView.cpp
+HEADERS += user_indexView.moc
+SOURCES += user_indexView.cpp
+HEADERS += user_saveView.moc
+SOURCES += user_saveView.cpp
+HEADERS += user_showView.moc
+SOURCES += user_showView.cpp
+
+# include view files in the project
+views.files += ../user/create.erb
+views.files += ../user/index.erb
+views.files += ../user/save.erb
+views.files += ../user/show.erb
+views.path = .dummy
+INSTALLS += views
